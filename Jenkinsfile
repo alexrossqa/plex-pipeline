@@ -22,7 +22,7 @@ pipeline {
                 dir('plex-sync-scripts') {
                     checkout([
                         $class: 'GitSCM',
-                        branches: [[name: '*/main']],
+                        branches: [[name: '*/master']],
                         userRemoteConfigs: [[
                             url: 'https://github.com/alexrossqa/plex-sync-scripts.git'
                         ]]

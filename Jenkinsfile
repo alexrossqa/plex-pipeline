@@ -95,9 +95,9 @@ pipeline {
                     mvn clean test -Denv=ad ^
                         -Dgroups=daily ^
                         -DlastRun=%LAST_RUN% ^
-                        -Dplex.token=%PLEX_TOKEN% ^
+                        -Dplex.token=%PLEX_TOKEN_PSW% ^
                         -Dtmdb.baseUrl=https://api.themoviedb.org/3 ^
-                        -Dtmdb.apiKey=%TMDB_API_KEY%
+                        -Dtmdb.apiKey=%TMDB_API_KEY_PSW%
                 '''
             }
             post {

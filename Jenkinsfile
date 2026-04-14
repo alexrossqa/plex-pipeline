@@ -13,6 +13,7 @@ pipeline {
         HDD_FOLDER    = 'E:\\#FILMS\\'
         PLEX_TOKEN    = credentials('plex-token')
         TMDB_API_KEY  = credentials('tmdb-api-key')
+		PLEX_URL      = 'http://127.0.0.1:32400'
     }
 
     stages {
@@ -92,7 +93,7 @@ pipeline {
         stage('Run Plex API Tests') {
             steps {
 				bat 'set | findstr PLEX'	
-                bat 'mvn clean test -Denv=ad -Dgroups=daily -DlastRun=%LAST_RUN% -Dplextoken=%PLEX_TOKEN% -Dplex.token=%PLEX_TOKEN% -Dtmdb.baseUrl=https://api.themoviedb.org/3 -Dtmdb.apiKey=%TMDB_API_KEY% -f %WORKSPACE%\\plex-rest-assured\\pom.xml'
+                bat 'mvn clean test -Dplex.baseUrl=%PLEX_URL% -Denv=ad -Dgroups=daily -DlastRun=%LAST_RUN% -Dplextoken=%PLEX_TOKEN% -Dplex.token=%PLEX_TOKEN% -Dtmdb.baseUrl=https://api.themoviedb.org/3 -Dtmdb.apiKey=%TMDB_API_KEY% -f %WORKSPACE%\\plex-rest-assured\\pom.xml'
             }
             post {
                 success {

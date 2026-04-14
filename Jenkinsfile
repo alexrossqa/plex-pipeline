@@ -90,8 +90,9 @@ pipeline {
 
         stage('Run Plex API Tests') {
             steps {
+				bat 'set | findstr PLEX'	
                 bat '''
-					echo Token is: %PLEX_TOKEN_PSW%
+					echo Token is: %PLEX_TOKEN%
                     cd %WORKSPACE%\\plex-rest-assured
                     mvn clean test -Denv=ad ^
                         -Dgroups=daily ^

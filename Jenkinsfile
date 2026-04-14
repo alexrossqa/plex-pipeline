@@ -32,6 +32,7 @@ pipeline {
                     checkout([
                         $class: 'GitSCM',
                         branches: [[name: '*/main']],
+						extensions: [[$class: 'CleanBeforeCheckout']],
                         userRemoteConfigs: [[
                             url: 'https://github.com/alexrossqa/plex-rest-assured.git'
                         ]]

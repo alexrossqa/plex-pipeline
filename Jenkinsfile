@@ -97,7 +97,7 @@ pipeline {
 				script {
 					def lastRun = '0'
 					if (fileExists(env.LAST_RUN_FILE)) {
-						lastRun = readFile(env.LAST_RUN_FILE).trim()
+						lastRun = readFile(env.LAST_RUN_FILE).trim().replaceAll('[^0-9]', '')
 					}
 					env.LAST_RUN = lastRun
 					echo "Last run timestamp: ${env.LAST_RUN}"

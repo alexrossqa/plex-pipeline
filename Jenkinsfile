@@ -6,7 +6,6 @@ pipeline {
     }
 
     environment {
-        LAST_RUN      = '1770000000'
         LAST_RUN_FILE = 'C:\\Jenkins\\plex-last-run.txt'
         LOG_DIR       = 'C:\\Jenkins\\Logs\\PlexSync'
         GDRIVE_FOLDER = 'G:\\Other computers\\MINI\\#FILMS\\'
@@ -92,6 +91,19 @@ pipeline {
                 '''
             }
         }
+
+		stage('Read Last Run Timestamp') {
+			steps {
+				script {
+					def lastRun = '0'
+					if (fileExists(env.LAST_RUN_FILE)) {
+						lastRun = readFile(env.LAST_RUN_FILE).trim()
+					}
+					env.LAST_RUN = lastRun
+					echo "Last run timestamp: ${env.LAST_RUN}"
+				}
+			}
+		}
 
         stage('Run Plex API Tests') {
             steps {

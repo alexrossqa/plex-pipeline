@@ -14,6 +14,9 @@ pipeline {
         PLEX_TOKEN    = credentials('plex-token')
         TMDB_API_KEY  = credentials('tmdb-api-key')
 		PLEX_URL      = 'http://127.0.0.1:32400'
+		GMAIL_USERNAME    = credentials('gmail-username')
+		GMAIL_APP_PASSWORD = credentials('gmail-app-password')
+		MAIL_RECIPIENTS = 'alex.ross.qa@gmail.com, 78matt.grant@gmail.com, contact@jasminesoliman.com'
     }
 
     stages {
@@ -92,7 +95,7 @@ pipeline {
 
         stage('Run Plex API Tests') {
             steps {
-                bat 'mvn clean test -Dplex.baseUrl=%PLEX_URL% -Denv=ad -Dgroups=daily -DlastRun=%LAST_RUN% -Dplex.token=%PLEX_TOKEN% -Dtmdb.baseUrl=https://api.themoviedb.org/3 -Dtmdb.apiKey=%TMDB_API_KEY% -f %WORKSPACE%\\plex-rest-assured\\pom.xml'
+                bat 'mvn clean test -Dplex.baseUrl=%PLEX_URL% -Denv=ad -Dgroups=daily -DlastRun=%LAST_RUN% -Dplex.token=%PLEX_TOKEN% -Dtmdb.baseUrl=https://api.themoviedb.org/3 -Dtmdb.apiKey=%TMDB_API_KEY% -f %WORKSPACE%\\plex-rest-assured\\pom.xml' -Dgmail.username=%GMAIL_USERNAME% -Dgmail.password=%GMAIL_APP_PASSWORD% -Dmail.recipients=%MAIL_RECIPIENTS% -Dgroups=daily
             }
             post {
                 success {

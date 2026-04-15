@@ -95,7 +95,7 @@ pipeline {
 
         stage('Run Plex API Tests') {
             steps {
-                bat 'mvn clean test -Dplex.baseUrl=%PLEX_URL% -Denv=ad -Dgroups=daily -DlastRun=%LAST_RUN% -Dplex.token=%PLEX_TOKEN% -Dtmdb.baseUrl=https://api.themoviedb.org/3 -Dtmdb.apiKey=%TMDB_API_KEY% -f %WORKSPACE%\\plex-rest-assured\\pom.xml' -Dgmail.username=%GMAIL_USERNAME% -Dgmail.password=%GMAIL_APP_PASSWORD% -Dmail.recipients=%MAIL_RECIPIENTS% -Dgroups=daily
+                bat 'mvn clean test -Dplex.baseUrl=%PLEX_URL% -Denv=ad -Dgroups=daily -DlastRun=%LAST_RUN% -Dplex.token=%PLEX_TOKEN% -Dtmdb.baseUrl=https://api.themoviedb.org/3 -Dtmdb.apiKey=%TMDB_API_KEY% -Dgmail.username=%GMAIL_USERNAME% -Dgmail.password=%GMAIL_APP_PASSWORD% -Dmail.recipients=%MAIL_RECIPIENTS% -Dgroups=daily -f %WORKSPACE%\\plex-rest-assured\\pom.xml' 
             }
             post {
                 success {

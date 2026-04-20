@@ -1,4 +1,4 @@
-**plex-pipeline**
+# plex-pipeline
 
 **What does it do?**
 

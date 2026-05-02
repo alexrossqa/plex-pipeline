@@ -15,7 +15,7 @@ pipeline {
 		PLEX_URL      = 'http://127.0.0.1:32400'
 		GMAIL_USERNAME    = credentials('gmail-username')
 		GMAIL_APP_PASSWORD = credentials('gmail-app-password')
-		MAIL_RECIPIENTS = 'alex.ross.qa@gmail.com,78matt.grant@gmail.com,contact@jasminesoliman.com'
+		MAIL_RECIPIENTS = 'alex.ross.qa@gmail.com,78matt.grant@gmail.com,contact@jasminesoliman.com,mkamarcord@icloud.com'
     }
 
     stages {
